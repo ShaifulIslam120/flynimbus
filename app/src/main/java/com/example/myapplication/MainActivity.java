@@ -6,30 +6,61 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner spinnerFrom, spinnerTo, spinnerAdult, spinnerChild, spinnerSeatClass, spinnerDate; // Add spinnerDate
+    private Spinner spinnerFrom, spinnerTo, spinnerAdult, spinnerChild, spinnerSeatClass, spinnerDate;
+    private Map<String, Integer> seatClassPrices = new HashMap<>(); // Map to store seat class prices
+    private TextView textViewEmail;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        // Initialize the TextView for displaying email
+        textViewEmail = findViewById(R.id.textViewEmail);
+
+        // Get the current user
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        // Check if the user is logged in
+        if (currentUser != null) {
+            // Display the user's email
+            String email = currentUser.getEmail();
+            textViewEmail.setText("Logged in as: " + email);
+        } else {
+            // Handle case when the user is not logged in
+            textViewEmail.setText("Not logged in");
+        }
+
         // Initialize spinners
         spinnerFrom = findViewById(R.id.spinner_from);
         spinnerTo = findViewById(R.id.spinner_to);
         spinnerAdult = findViewById(R.id.spinnerAdult);
         spinnerChild = findViewById(R.id.spinnerChild);
-        spinnerSeatClass = findViewById(R.id.spinnerSeatClass); // Added for seat class spinner
-        spinnerDate = findViewById(R.id.spinnerDate); // Added for date spinner
+        spinnerSeatClass = findViewById(R.id.spinnerSeatClass);
+        spinnerDate = findViewById(R.id.spinnerDate);
+
+        // Initialize seat class prices (example prices)
+        seatClassPrices.put("Economy", 100);   // Economy price
+        seatClassPrices.put("Business", 300);  // Business price
+        seatClassPrices.put("First Class", 600); // First Class price
 
         // Adapter for Country list (From and To spinners)
         ArrayAdapter<CharSequence> countryAdapter = ArrayAdapter.createFromResource(this, R.array.country_list, android.R.layout.simple_spinner_item);
@@ -67,18 +98,31 @@ public class MainActivity extends AppCompatActivity {
         setSpinnerListener(spinnerTo, "To");
         setSpinnerListener(spinnerAdult, "Adults");
         setSpinnerListener(spinnerChild, "Children");
-        setSpinnerListener(spinnerSeatClass, "Seat Class"); // Added listener for Seat Class spinner
-        setSpinnerListener(spinnerDate, "Date"); // Added listener for Date spinner
+        setSpinnerListener(spinnerSeatClass, "Seat Class");
+        setSpinnerListener(spinnerDate, "Date");
 
         // Button setup for Submit action
         Button submitButton = findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        submitButton.setOnClickListener(v -> {
+            // Get the selected values from the spinners
+            String fromValue = spinnerFrom.getSelectedItem().toString();
+            String toValue = spinnerTo.getSelectedItem().toString();
+            String selectedSeatClass = spinnerSeatClass.getSelectedItem().toString();
+            int seatClassPrice = seatClassPrices.getOrDefault(selectedSeatClass, 0);
+
+            // Check if a valid seat class is selected (not "Select Seat Class")
+            if (!selectedSeatClass.equals("Select Seat Class")) {
                 // Create an Intent to navigate to AirlinesChose activity
                 Intent intent = new Intent(MainActivity.this, Airlineschose.class);
+                // Pass selected values to the AirlinesChose activity
+                intent.putExtra("from_value", fromValue);
+                intent.putExtra("to_value", toValue);
+                intent.putExtra("selectedSeatClass", selectedSeatClass);
+                intent.putExtra("price", seatClassPrice);
                 // Start the AirlinesChose activity
                 startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Please select a seat class", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -107,4 +151,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-

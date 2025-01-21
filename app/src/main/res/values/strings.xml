@@ -3,7 +3,7 @@
     <string name="skybird">Skybird</string>
 
     <!-- Registration Page Strings -->
-
+    <!-- Add your registration related strings here -->
 
     <!-- Country list for the spinners -->
     <string-array name="country_list">
@@ -78,4 +78,5 @@
         <item>Business</item>
         <item>First Class</item>
     </string-array>
+
 </resources>

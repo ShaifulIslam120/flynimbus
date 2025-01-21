@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".seatchosse">
+
+    <!-- Top Section (background image and content) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="692dp"
+            android:backgroundTint="@color/blue"
+            android:elevation="4dp"
+            android:text="Confirm"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_bg_bottom_corner"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/imageViewTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/world" />
+
+        <TextView
+            android:id="@+id/textViewTop"
+            android:layout_width="152dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="20dp"
+            android:text="Choose your seat"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ImageView7 (it will overlay the top section and other content) -->
+
+
+    <!-- Seats starting from A1 with reduced size -->
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="455dp"
+        android:layout_height="635dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395"
+        app:srcCompat="@drawable/airple_seat" />
+
+    <TextView
+        android:id="@+id/seatA1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="204dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="A1"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatA2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="204dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="A2"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatA3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="204dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="A3"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatA4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="204dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="A4"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatA5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="204dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="A5"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatB1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="248dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="B1"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatB2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="248dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="B2"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatB3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="248dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="B3"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatB4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="248dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="B4"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <!-- Seats D1, D2, D3, D4, D5 -->
+    <TextView
+        android:id="@+id/seatB5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="248dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="B5"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatD1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="D1"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatD2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="D2"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatD3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="D3"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <!-- Seats E1, E2, E3, E4, E5 -->
+    <TextView
+        android:id="@+id/seatD4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="D4"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatD5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="D5"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatE1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="E1"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatE2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="E2"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatE3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="E3"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <!-- Seats F1, F2, F3, F4, F5 -->
+    <TextView
+        android:id="@+id/seatE4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="E4"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatE5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="E5"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatF1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="F1"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatF2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="F2"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatF3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="F3"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatF4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="F4"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatF5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="F5"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatG1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="G1"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatG2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="G2"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatG3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="G3"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <!-- Seats H1, H2, H3, H4, H5 -->
+
+    <TextView
+        android:id="@+id/seatG4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="G4"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatG5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="412dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="G5"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatH1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="452dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="H1"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatH2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="452dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="H2"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatH3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="452dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="H3"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <!-- Seats I1, I2, I3, I4, I5 -->
+    <TextView
+        android:id="@+id/seatH4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="452dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="H4"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatH5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="452dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="H5"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatI1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="492dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="I1"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatI2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="492dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="I2"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatI3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="492dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="I3"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <!-- Seats J1, J2, J3, J4, J5 -->
+    <TextView
+        android:id="@+id/seatI4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="492dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="I4"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatI5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="492dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="I5"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatJ1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="532dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="J1"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatJ2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="532dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="J2"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/imageView7"
+        app:layout_constraintTop_toTopOf="@id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatJ3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="532dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="J3"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatJ4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="532dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="J4"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/seatJ5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="532dp"
+        android:background="@drawable/seat_shape"
+        android:gravity="center"
+        android:text="J5"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
