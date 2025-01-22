@@ -3,8 +3,6 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,32 +12,42 @@ import java.util.ArrayList;
 
 public class seatchosse extends AppCompatActivity {
 
-    // Track seat selection status for all seats
-    private boolean isA1Selected, isA2Selected, isA3Selected, isA4Selected, isA5Selected;
-    private boolean isB1Selected, isB2Selected, isB3Selected, isB4Selected, isB5Selected;
-    private boolean isD1Selected, isD2Selected, isD3Selected, isD4Selected, isD5Selected;
-    private boolean isE1Selected, isE2Selected, isE3Selected, isE4Selected, isE5Selected;
-    private boolean isF1Selected, isF2Selected, isF3Selected, isF4Selected, isF5Selected;
-
     private static final String PREFS_NAME = "SeatSelectionPrefs";
     private static final String SEAT_PREFIX = "seat_";
 
-    private ArrayList<String> selectedSeats = new ArrayList<>();  // List to store selected seats
+    private ArrayList<String> selectedSeats = new ArrayList<>();
+    private int seatPrice = 0;
+    private String airline;
+    private String seatClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seatchosse);
 
-        // Load seat selection from SharedPreferences
+        // Load seat selections from SharedPreferences
         loadSeatSelections();
 
-        // Initialize all seats
+        // Initialize seat buttons
         initializeSeats();
 
-        // Find and set the Confirm button
-        Button confirmButton = findViewById(R.id.confirmButton);
-        confirmButton.setOnClickListener(v -> onConfirmClicked());
+        // Retrieve values from the intent
+        airline = getIntent().getStringExtra("airline");
+        seatClass = getIntent().getStringExtra("seatClass");
+
+        // Set seat price
+        if (airline != null && seatClass != null) {
+            seatPrice = getSeatPrice(airline, seatClass);
+        }
+
+        // Display seat information
+        ((TextView) findViewById(R.id.priceTextView)).setText("Seat Price: $" + seatPrice);
+        ((TextView) findViewById(R.id.airlineTextView)).setText("Airline: " + airline);
+        ((TextView) findViewById(R.id.seatClassTextView)).setText("Class: " + seatClass);
+
+        // Set button listeners
+        findViewById(R.id.confirmButton).setOnClickListener(v -> onConfirmClicked());
+
     }
 
     private void initializeSeats() {
@@ -54,9 +62,11 @@ public class seatchosse extends AppCompatActivity {
                     String seatName = row + i;
                     seat.setOnClickListener(v -> onSeatClicked(seat, seatName));
 
-                    // Set the background color based on whether the seat is selected
+                    // Set background based on selection state
                     if (isSeatSelected(seatName)) {
-                        seat.setBackgroundResource(R.drawable.seat_selected);  // Mark the seat as selected
+                        seat.setBackgroundResource(R.drawable.seat_selected);
+                    } else {
+                        seat.setBackgroundResource(R.drawable.seat_default);
                     }
                 }
             }
@@ -65,153 +75,107 @@ public class seatchosse extends AppCompatActivity {
 
     private void onSeatClicked(TextView seat, String seatName) {
         if (isSeatSelected(seatName)) {
-            Toast.makeText(this, "Seat " + seatName + " is already selected!", Toast.LENGTH_SHORT).show();
+            deselectSeat(seat, seatName);
         } else {
             selectSeat(seat, seatName);
         }
     }
 
-    private boolean isSeatSelected(String seatName) {
-        switch (seatName) {
-            case "A1": return isA1Selected;
-            case "A2": return isA2Selected;
-            case "A3": return isA3Selected;
-            case "A4": return isA4Selected;
-            case "A5": return isA5Selected;
-            case "B1": return isB1Selected;
-            case "B2": return isB2Selected;
-            case "B3": return isB3Selected;
-            case "B4": return isB4Selected;
-            case "B5": return isB5Selected;
-            case "D1": return isD1Selected;
-            case "D2": return isD2Selected;
-            case "D3": return isD3Selected;
-            case "D4": return isD4Selected;
-            case "D5": return isD5Selected;
-            case "E1": return isE1Selected;
-            case "E2": return isE2Selected;
-            case "E3": return isE3Selected;
-            case "E4": return isE4Selected;
-            case "E5": return isE5Selected;
-            case "F1": return isF1Selected;
-            case "F2": return isF2Selected;
-            case "F3": return isF3Selected;
-            case "F4": return isF4Selected;
-            case "F5": return isF5Selected;
-            default: return false;
-        }
+    private void selectSeat(TextView seat, String seatName) {
+        selectedSeats.add(seatName);
+        seat.setBackgroundResource(R.drawable.seat_selected);
+        saveSeatSelections();
+        Toast.makeText(this, "Seat " + seatName + " selected!", Toast.LENGTH_SHORT).show();
     }
 
-    private void selectSeat(TextView seat, String seatName) {
-        // Mark the seat as selected
-        switch (seatName) {
-            case "A1": isA1Selected = true; break;
-            case "A2": isA2Selected = true; break;
-            case "A3": isA3Selected = true; break;
-            case "A4": isA4Selected = true; break;
-            case "A5": isA5Selected = true; break;
-            case "B1": isB1Selected = true; break;
-            case "B2": isB2Selected = true; break;
-            case "B3": isB3Selected = true; break;
-            case "B4": isB4Selected = true; break;
-            case "B5": isB5Selected = true; break;
-            case "D1": isD1Selected = true; break;
-            case "D2": isD2Selected = true; break;
-            case "D3": isD3Selected = true; break;
-            case "D4": isD4Selected = true; break;
-            case "D5": isD5Selected = true; break;
-            case "E1": isE1Selected = true; break;
-            case "E2": isE2Selected = true; break;
-            case "E3": isE3Selected = true; break;
-            case "E4": isE4Selected = true; break;
-            case "E5": isE5Selected = true; break;
-            case "F1": isF1Selected = true; break;
-            case "F2": isF2Selected = true; break;
-            case "F3": isF3Selected = true; break;
-            case "F4": isF4Selected = true; break;
-            case "F5": isF5Selected = true; break;
-        }
-
-        seat.setBackgroundResource(R.drawable.seat_selected);  // Change seat background to selected
-        Toast.makeText(this, "Seat " + seatName + " selected!", Toast.LENGTH_SHORT).show();
-
-        // Add selected seat to the list
-        if (!selectedSeats.contains(seatName)) {
-            selectedSeats.add(seatName);  // Avoid adding duplicates
-        }
-
-        // Save the updated seat selection to SharedPreferences
+    private void deselectSeat(TextView seat, String seatName) {
+        selectedSeats.remove(seatName);
+        seat.setBackgroundResource(R.drawable.seat_default);
         saveSeatSelections();
+        Toast.makeText(this, "Seat " + seatName + " deselected!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void resetSeats() {
+        selectedSeats.clear();
+
+        String[] seatRows = {"A", "B", "D", "E", "F"};
+        for (String row : seatRows) {
+            for (int i = 1; i <= 5; i++) {
+                String seatId = "seat" + row + i;
+                int resId = getResources().getIdentifier(seatId, "id", getPackageName());
+                TextView seat = findViewById(resId);
+
+                if (seat != null) {
+                    seat.setBackgroundResource(R.drawable.seat_default);
+                }
+            }
+        }
+
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        sharedPreferences.edit().clear().apply();
+
+        Toast.makeText(this, "All seats have been reset.", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isSeatSelected(String seatName) {
+        return selectedSeats.contains(seatName);
     }
 
     private void saveSeatSelections() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        // Save the selection state of each seat
-        for (int row = 0; row < 5; row++) {
-            for (int col = 1; col <= 5; col++) {
-                String seatName = (char) ('A' + row) + String.valueOf(col);
-                editor.putBoolean(SEAT_PREFIX + seatName, isSeatSelected(seatName));
-            }
+        editor.clear();
+        for (String seat : selectedSeats) {
+            editor.putBoolean(SEAT_PREFIX + seat, true);
         }
-
-        editor.apply();  // Apply changes asynchronously
+        editor.apply();
     }
 
     private void loadSeatSelections() {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        selectedSeats.clear();
 
-        // Load the seat selection states from SharedPreferences
-        for (int row = 0; row < 5; row++) {
-            for (int col = 1; col <= 5; col++) {
-                String seatName = (char) ('A' + row) + String.valueOf(col);
-                boolean selected = sharedPreferences.getBoolean(SEAT_PREFIX + seatName, false);
-                setSeatSelection(seatName, selected);
+        String[] seatRows = {"A", "B", "D", "E", "F"};
+        for (String row : seatRows) {
+            for (int i = 1; i <= 5; i++) {
+                String seatName = row + i;
+                if (sharedPreferences.getBoolean(SEAT_PREFIX + seatName, false)) {
+                    selectedSeats.add(seatName);
+                }
             }
         }
     }
 
-    private void setSeatSelection(String seatName, boolean isSelected) {
-        switch (seatName) {
-            case "A1": isA1Selected = isSelected; break;
-            case "A2": isA2Selected = isSelected; break;
-            case "A3": isA3Selected = isSelected; break;
-            case "A4": isA4Selected = isSelected; break;
-            case "A5": isA5Selected = isSelected; break;
-            case "B1": isB1Selected = isSelected; break;
-            case "B2": isB2Selected = isSelected; break;
-            case "B3": isB3Selected = isSelected; break;
-            case "B4": isB4Selected = isSelected; break;
-            case "B5": isB5Selected = isSelected; break;
-            case "D1": isD1Selected = isSelected; break;
-            case "D2": isD2Selected = isSelected; break;
-            case "D3": isD3Selected = isSelected; break;
-            case "D4": isD4Selected = isSelected; break;
-            case "D5": isD5Selected = isSelected; break;
-            case "E1": isE1Selected = isSelected; break;
-            case "E2": isE2Selected = isSelected; break;
-            case "E3": isE3Selected = isSelected; break;
-            case "E4": isE4Selected = isSelected; break;
-            case "E5": isE5Selected = isSelected; break;
-            case "F1": isF1Selected = isSelected; break;
-            case "F2": isF2Selected = isSelected; break;
-            case "F3": isF3Selected = isSelected; break;
-            case "F4": isF4Selected = isSelected; break;
-            case "F5": isF5Selected = isSelected; break;
-        }
-    }
-
     private void onConfirmClicked() {
-        // Check if at least one seat is selected
         if (selectedSeats.isEmpty()) {
-            Toast.makeText(this, "No seat selected! Please select at least one seat.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please select at least one seat.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Start TicketActivity and pass the selected seats list
+        int totalPrice = seatPrice * selectedSeats.size();
         Intent intent = new Intent(this, TicketActivity.class);
-        intent.putStringArrayListExtra("selectedSeats", selectedSeats);
+        intent.putExtra("selectedSeats", selectedSeats);
+        intent.putExtra("seatPrice", seatPrice);
+        intent.putExtra("airline", airline);
+        intent.putExtra("seatClass", seatClass);
+        intent.putExtra("totalPrice", totalPrice);
+
         startActivity(intent);
+    }
+
+    private int getSeatPrice(String airline, String seatClass) {
+        switch (airline) {
+            case "Southwest":
+                return seatClass.equals("Economy") ? 200 : seatClass.equals("Business") ? 350 : 500;
+            case "American Airlines":
+                return seatClass.equals("Economy") ? 180 : seatClass.equals("Business") ? 300 : 450;
+            case "Delta":
+                return seatClass.equals("Economy") ? 220 : seatClass.equals("Business") ? 375 : 525;
+            case "United":
+                return seatClass.equals("Economy") ? 210 : seatClass.equals("Business") ? 325 : 475;
+            default:
+                return 0;
+        }
     }
 }

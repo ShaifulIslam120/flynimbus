@@ -81,10 +81,11 @@ public class Airlineschose extends AppCompatActivity {
                 intent.putExtra("deltaPrice", deltaPrice);
                 intent.putExtra("unitedPrice", unitedPrice);
                 intent.putExtra("totalCost", totalCost);
+                intent.putExtra("airline", "Southwest"); // Pass the selected airline name
+                intent.putExtra("seatClass", selectedSeatClass); // Pass the selected seat class
                 startActivity(intent);
             }
         });
-
 
         // Add click listener to American Airlines image
         ImageView americanImage = findViewById(R.id.imageViewAmerican);
@@ -108,6 +109,8 @@ public class Airlineschose extends AppCompatActivity {
                 intent.putExtra("deltaPrice", deltaPrice);
                 intent.putExtra("unitedPrice", unitedPrice);
                 intent.putExtra("totalCost", totalCost);
+                intent.putExtra("airline", "American Airlines"); // Pass the selected airline name
+                intent.putExtra("seatClass", selectedSeatClass); // Pass the selected seat class
                 startActivity(intent);
             }
         });
@@ -134,6 +137,8 @@ public class Airlineschose extends AppCompatActivity {
                 intent.putExtra("deltaPrice", deltaPrice);
                 intent.putExtra("unitedPrice", unitedPrice);
                 intent.putExtra("totalCost", totalCost);
+                intent.putExtra("airline", "Delta"); // Pass the selected airline name
+                intent.putExtra("seatClass", selectedSeatClass); // Pass the selected seat class
                 startActivity(intent);
             }
         });
@@ -160,6 +165,8 @@ public class Airlineschose extends AppCompatActivity {
                 intent.putExtra("deltaPrice", deltaPrice);
                 intent.putExtra("unitedPrice", unitedPrice);
                 intent.putExtra("totalCost", totalCost);
+                intent.putExtra("airline", "United Airlines"); // Pass the selected airline name
+                intent.putExtra("seatClass", selectedSeatClass); // Pass the selected seat class
                 startActivity(intent);
             }
         });
@@ -195,59 +202,47 @@ public class Airlineschose extends AppCompatActivity {
         textViewToUnited.setText(to);
     }
 
-    // Methods to get the price based on the seat class for Southwest Airlines
+    // Method to get the price for Southwest Airlines based on the selected seat class
     private int getSouthwestPrice(String seatClass) {
-        switch (seatClass) {
-            case "Economy":
-                return 150;
-            case "Business":
-                return 250;
-            case "First Class":
-                return 350;
-            default:
-                return 150; // Default price
+        if (seatClass.equals("Economy")) {
+            return 200;
+        } else if (seatClass.equals("Business")) {
+            return 350;
+        } else {
+            return 500; // First Class
         }
     }
 
-    // Methods to get the price based on the seat class for American Airlines
+    // Method to get the price for American Airlines based on the selected seat class
     private int getAmericanPrice(String seatClass) {
-        switch (seatClass) {
-            case "Economy":
-                return 180;
-            case "Business":
-                return 280;
-            case "First Class":
-                return 380;
-            default:
-                return 180; // Default price
+        if (seatClass.equals("Economy")) {
+            return 180;
+        } else if (seatClass.equals("Business")) {
+            return 300;
+        } else {
+            return 450; // First Class
         }
     }
 
-    // Methods to get the price based on the seat class for Delta Airlines
+    // Method to get the price for Delta Airlines based on the selected seat class
     private int getDeltaPrice(String seatClass) {
-        switch (seatClass) {
-            case "Economy":
-                return 160;
-            case "Business":
-                return 260;
-            case "First Class":
-                return 360;
-            default:
-                return 160; // Default price
+        if (seatClass.equals("Economy")) {
+            return 220;
+        } else if (seatClass.equals("Business")) {
+            return 375;
+        } else {
+            return 525; // First Class
         }
     }
 
-    // Methods to get the price based on the seat class for United Airlines
+    // Method to get the price for United Airlines based on the selected seat class
     private int getUnitedPrice(String seatClass) {
-        switch (seatClass) {
-            case "Economy":
-                return 170;
-            case "Business":
-                return 270;
-            case "First Class":
-                return 370;
-            default:
-                return 170; // Default price
+        if (seatClass.equals("Economy")) {
+            return 210;
+        } else if (seatClass.equals("Business")) {
+            return 325;
+        } else {
+            return 475; // First Class
         }
     }
 }

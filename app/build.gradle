@@ -45,6 +45,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.itextpdf:itext7-core:7.1.15'
+    implementation 'com.itextpdf:itext7-core:7.2.2' // Latest
     // Firebase BOM (Bill of Materials)
 
 }

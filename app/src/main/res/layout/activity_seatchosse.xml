@@ -49,7 +49,6 @@
             android:layout_width="152dp"
             android:layout_height="27dp"
             android:layout_marginTop="20dp"
-            android:text="Choose your seat"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -709,6 +708,51 @@
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="@+id/imageView7" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+
+        android:layout_margin="8dp"
+        android:radius="8dp"
+        android:elevation="4dp">
+
+        <!-- Airline TextView -->
+        <TextView
+            android:id="@+id/airlineTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Airline"
+            android:textSize="18sp"
+            android:textColor="#3F51B5"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Seat Class TextView -->
+        <TextView
+            android:id="@+id/seatClassTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seat Class"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Price TextView -->
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seat Price"
+            android:textSize="16sp"
+            android:textColor="#FF5722"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
